@@ -1,7 +1,7 @@
 @extends('components.layout')
 @section('title', 'Home')
 @php
-    $activePage = 'home';
+    $activePage = 'about-us';
 @endphp
 
 @section('content')
