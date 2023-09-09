@@ -1,9 +1,11 @@
 @extends('components.layout')
-@section('title', 'Home')
+@section('title', 'My Rides')
 @php
-    $activePage = 'my-rides';
+    $activePage = 'my-ride';
 @endphp
 
 @section('content')
     @include('components.navigationBar')
+
+
 @endsection
