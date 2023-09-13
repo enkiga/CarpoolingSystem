@@ -7,5 +7,5 @@
 @section('content')
     @include('components.navigationBar')
 
-
+    @include('components.footer')
 @endsection

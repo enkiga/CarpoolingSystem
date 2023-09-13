@@ -40,7 +40,9 @@
         </div>
 
         <div class="flex items-center gap-6">
-            <button class="bg-secondary-500 text-white px-5 py-2 rounded-full hover:bg-primary-300"> Sign In</button>
+            <a
+                href="/login"
+                class="bg-secondary-500 text-white px-5 py-2 rounded-full hover:bg-primary-300"> Sign In</a>
             <box-icon onclick="onToggleMenu(this)" name='menu-alt-right'
                       class="text-3xl cursor-pointer md:hidden"></box-icon>
         </div>
