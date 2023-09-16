@@ -27,13 +27,13 @@
                 </li>
 
                 <li>
-                    <a class="hover:text-secondary-500 {{ $activePage === 'account' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
-                       href="/profile">Profile</a>
+                    <a class="hover:text-secondary-500 {{ $activePage === 'find-car' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
+                       href="/find">Find A Car</a>
                 </li>
 
                 <li>
-                    <a class="hover:text-secondary-500 {{ $activePage === 'find-car' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
-                       href="/find">Find A Car</a>
+                    <a class="hover:text-secondary-500 {{ $activePage === 'account' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
+                       href="/profile">Profile</a>
                 </li>
 
             </ul>
