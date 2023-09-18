@@ -21,7 +21,7 @@
                     between passengers.</p>
                 <div class="flex justify-center">
                     <a
-                        href="#"
+                        href="/find"
                         class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">
                         Get a Ride
                     </a>

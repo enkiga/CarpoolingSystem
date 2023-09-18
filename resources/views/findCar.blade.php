@@ -76,7 +76,7 @@
                             <td class="p-3 text-sm text-gray-700">300</td>
                             <td class="p-3 text-sm text-gray-700">
                                 <button class="bg-secondary-500 hover:bg-secondary-400 text-white py-2 px-6 rounded">
-                                    Book
+                                    View
                                 </button>
                             </td>
                         </tr>
