@@ -11,7 +11,7 @@
 
         <div class="container mx-auto flex px-5 py-10 flex-col items-center">
             {{--search container--}}
-            <div class="mt-8 bg-primary-50 flex flex-wrap px-5 py-3 rounded shadow-md justify-between w-full">
+            <form class="mt-8 bg-primary-50 flex flex-wrap px-5 py-3 rounded shadow-md justify-between w-full">
 
                 <div class="items-start py-2 px-2">
                     <div class="mt-3">
@@ -49,7 +49,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
 
             {{--results container--}}
             <div class="w-full mt-8">
@@ -87,6 +87,7 @@
                     </table>
                 </div>
             </div>
+
         </div>
     </section>
 

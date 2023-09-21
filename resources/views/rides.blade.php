@@ -19,6 +19,7 @@
                                 <thead>
                                 <tr class="bg-secondary-400 text-white uppercase text-sm leading-normal">
                                     <th class="py-3 px-6 text-left">Owner</th>
+                                    <th class="py-3 px-6 text-center">Date</th>
                                     <th class="py-3 px-6 text-center">Time</th>
                                     <th class="py-3 px-6 text-center">Destination</th>
                                     <th class="py-3 px-6 text-center">Seats</th>
@@ -36,6 +37,9 @@
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
+                                        <span>12/12/24</span>
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
                                         <span>10:00 AM</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
@@ -46,7 +50,7 @@
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                     <span
-                                        class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Accepted</span>
+                                        class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Rejected</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex item-center justify-center">
@@ -70,6 +74,9 @@
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
+                                        <span>12/12/24</span>
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
                                         <span>10:00 AM</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
@@ -81,11 +88,14 @@
                                     <td class="py-3 px-6 text-center">
                                     <span
                                         class="bg-orange-200 text-orange-600 py-1 px-3 rounded-full text-xs">Pending</span>
+                                    </td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex item-center justify-center">
-                                            <div class="w-5 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                                <i class='bx bxs-info-circle'></i>
-                                            </div>
+                                            <a href="/requestInfo">
+                                                <div class="w-5 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                                    <i class='bx bxs-info-circle'></i>
+                                                </div>
+                                            </a>
                                             <div class="w-5 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                 <i class='bx bxs-trash'></i>
                                             </div>
@@ -101,6 +111,9 @@
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
+                                        <span>12/12/24</span>
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
                                         <span>10:00 AM</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
@@ -111,13 +124,15 @@
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                     <span
-                                        class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Denied</span>
+                                        class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Accepted</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex item-center justify-center">
-                                            <div class="w-5 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                                <i class='bx bxs-info-circle'></i>
-                                            </div>
+                                            <a href="/requestInfo">
+                                                <div class="w-5 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                                    <i class='bx bxs-info-circle'></i>
+                                                </div>
+                                            </a>
                                             <div class="w-5 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                 <i class='bx bxs-trash'></i>
                                             </div>
