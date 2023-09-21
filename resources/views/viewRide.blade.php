@@ -1,7 +1,7 @@
 @extends('components.layout')
 @section('title', 'Find a Ride')
 @php
-    $activePage = 'my-ride';
+    $activePage = 'find-car';
 @endphp
 
 @section('content')
@@ -30,7 +30,7 @@
 
                         <div
                             class="bg-primary-100 px-3 py-1 rounded-full text-xs font-medium text-gray-600 hidden md:block">
-                            Accepted
+                            Sedan
                         </div>
                     </div>
                     <h3 class="font-black text-secondary-500 md:text-3xl text-xl">Syokimau - Thika</h3>
@@ -38,12 +38,7 @@
                         Owner Name: <span class="text-gray-800 font-medium">John Doe</span>
                     </p>
                     <p class="md:text-lg text-gray-500 text-base font-semibold">
-                        Owner Contact: <span class="text-gray-800 font-medium">(+254) 12 345 678</span>
-                    </p>
-                    <p class="md:text-lg text-gray-500 text-base font-semibold">
-                        Car: <span class="text-gray-800 font-medium">Nissan Sunny</span> /
-                        <span class="text-gray-800 font-medium">KCA 123Z</span> /
-                        <span class="text-secondary-500 font-medium">Sedan</span>
+                        Car Model: <span class="text-gray-800 font-medium">Nissan Sunny</span>
                     </p>
 
                     <p class="text-xl font-black text-secondary-500">
@@ -58,18 +53,13 @@
                             </p>
                         </div>
 
-                        <div class="flex items-center">
-                            <i class='bx bx-calendar text-gray-500'></i>
-                            <p class="text-gray-600 font-bold text-sm ml-1">
-                                12/12/24
-                            </p>
-                        </div>
+                        <div>
+                            <a
+                                href="#"
+                                class="bg-secondary-500 hover:bg-secondary-400 text-white py-2 px-6 rounded">
+                                Book
+                            </a>
 
-                        <div class="flex items-center">
-                            <i class='bx bx-receipt text-gray-500'></i>
-                            <p class="text-gray-600 font-bold text-sm ml-1">
-                                Ticket No: <span class="text-gray-800 font-medium">B611</span>
-                            </p>
                         </div>
                     </div>
                 </div>

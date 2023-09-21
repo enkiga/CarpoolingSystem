@@ -25,6 +25,22 @@ Route::get('/find', function () {
     return view('findCar');
 });
 
+Route::get('/add', function () {
+    return view('addCar');
+});
+
+Route::get('/requestInfo', function () {
+    return view('viewRequest');
+});
+
+Route::get('/rideInfo', function () {
+    return view('viewRide');
+});
+
+Route::get('/bookingInfo', function () {
+    return view('viewBookings');
+});
+
 Route::get('/car-details', function () {
     return view('carDetails');
 });

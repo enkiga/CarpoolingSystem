@@ -33,9 +33,10 @@
                                 <tr class="bg-secondary-400 text-white uppercase text-sm leading-normal">
                                     <th class="py-3 px-6 text-left">Vehicle</th>
                                     <th class="py-3 px-6 text-center">Type</th>
+                                    <th class="py-3 px-6 text-center">Plate</th>
                                     <th class="py-3 px-6 text-center">Route</th>
                                     <th class="py-3 px-6 text-center">Seats</th>
-                                    <th class="py-3 px-6 text-center">Request</th>
+                                    <th class="py-3 px-6 text-center">Requests</th>
                                     <th class="py-3 px-6 text-center">Actions</th>
                                 </tr>
                                 </thead>
@@ -45,21 +46,33 @@
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
 
-                                            <span>John Doe</span>
+                                            <span>Nissan Sunny</span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
-                                        <span>10:00 AM</span>
+                                        <span>Sedan</span>
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
+                                        <span>KCA 123Z</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <span>Thika - Syokimau</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
-                                        <span>3</span>
+                                        <span>4</span>
                                     </td>
-                                    <td class="py-3 px-6 text-center">
-                                    <span
-                                        class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Accepted</span>
+                                    <td class="py-3 px-6 text-center text-sm text-gray-700">
+                                        <div class="relative inline-flex w-fit">
+                                            <div
+                                                class="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-primary-300 px-2.5 py-1 text-center align-baseline text-xs font-bold leading-none text-secondary-500">
+                                                <span>1</span>
+                                            </div>
+                                            <a
+                                                href="/bookingInfo"
+                                                class="inline-block rounded bg-secondary-500 px-6 py-2 text-sm font-medium leading-normal text-white hover:bg-secondary-400 ">
+                                                View
+                                            </a>
+                                        </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex item-center justify-center">
@@ -98,21 +111,33 @@
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
 
-                                            <span>John Doe</span>
+                                            <span>Nissan Sunny</span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
-                                        <span>10:00 AM</span>
+                                        <span>Sedan</span>
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
+                                        <span>KCA 123Z</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <span>Thika - Syokimau</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
-                                        <span>3</span>
+                                        <span>4</span>
                                     </td>
-                                    <td class="py-3 px-6 text-center">
-                                    <span
-                                        class="bg-orange-200 text-orange-600 py-1 px-3 rounded-full text-xs">Pending</span>
+                                    <td class="py-3 px-6 text-center text-sm text-gray-700">
+                                        <div class="relative inline-flex w-fit">
+                                            <div
+                                                class="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-primary-300 px-2.5 py-1 text-center align-baseline text-xs font-bold leading-none text-secondary-500">
+                                                <span>1</span>
+                                            </div>
+                                            <a
+                                                href="/bookingInfo"
+                                                class="inline-block rounded bg-secondary-500 px-6 py-2 text-sm font-medium leading-normal text-white hover:bg-secondary-400 ">
+                                                View
+                                            </a>
+                                        </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex item-center justify-center">
@@ -151,21 +176,33 @@
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
 
-                                            <span>John Doe</span>
+                                            <span>Nissan Sunny</span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
-                                        <span>10:00 AM</span>
+                                        <span>Sedan</span>
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
+                                        <span>KCA 123Z</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <span>Thika - Syokimau</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
-                                        <span>3</span>
+                                        <span>4</span>
                                     </td>
-                                    <td class="py-3 px-6 text-center">
-                                    <span
-                                        class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Denied</span>
+                                    <td class="py-3 px-6 text-center text-sm text-gray-700">
+                                        <div class="relative inline-flex w-fit">
+                                            <div
+                                                class="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-primary-300 px-2.5 py-1 text-center align-baseline text-xs font-bold leading-none text-secondary-500">
+                                                <span>1</span>
+                                            </div>
+                                            <a
+                                                href="/bookingInfo"
+                                                class="inline-block rounded bg-secondary-500 px-6 py-2 text-sm font-medium leading-normal text-white hover:bg-secondary-400 ">
+                                                View
+                                            </a>
+                                        </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex item-center justify-center">
