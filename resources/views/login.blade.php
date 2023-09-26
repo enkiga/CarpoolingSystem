@@ -29,7 +29,8 @@
                         alert('{{session('error')}}');
                     </script>
                 @endif
-                <form class="space-y-6" action="{{route('login.post')}}" method="POST">
+                <form class="space-y-6" action="{{route('login.post')}}" method="POST"
+                      onsubmit="return loginValidator()">
                     @csrf
                     <div>
                         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email
@@ -51,6 +52,12 @@
                     </div>
 
                     <div>
+                        <input type="checkbox" name="view_password" id="viewPassword"
+                               onchange=" return togglePasswordVisibility()">
+                        <label for="viewPassword">View Password</label>
+                    </div>
+
+                    <div>
                         <button type="submit"
                                 class="flex w-full justify-center rounded-md bg-primary-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                             Sign in
@@ -65,4 +72,33 @@
                 </p>
             </div>
         </div>
+        <script>
+            function loginValidator() {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                if (email === '') {
+                    alert('Email is required');
+                    return false;
+                }
+
+                if (password === '') {
+                    alert('Password is required');
+                    return false;
+                }
+
+                return true;
+            }
+
+            function togglePasswordVisibility() {
+                const passwordInput = document.getElementById('password');
+                const viewPasswordCheckbox = document.getElementById('viewPassword');
+
+                if (viewPasswordCheckbox.checked) {
+                    passwordInput.type = 'text';
+                } else {
+                    passwordInput.type = 'password';
+                }
+            }
+        </script>
 @endsection
