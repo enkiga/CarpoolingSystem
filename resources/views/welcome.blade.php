@@ -14,11 +14,19 @@
                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Green Energy
                     <br class="hidden lg:inline-block">Carpooling services
                 </h1>
-                <p class="mb-8 leading-relaxed">A transport solution that is beneficial to the environment. It eases the
-                    burden of too
-                    many vehicles on the road, reduce air and noise pollution. Helps reduce fuel expense due to the
-                    ideology of cost sharing
-                    between passengers.</p>
+                <h3 class="mb-8 leading-relaxed text-lg">
+                    Hello There
+                    <span class="text-secondary-500 font-semibold">
+                        @if (session('user'))
+                            {{session('user')->name}}
+                        @else
+                            👋
+                        @endif
+                    </span>, Welcome to Green Energy Carpooling Services. We are a carpooling service that:
+                </h3>
+                <p class="mb-8 leading-relaxed">Offers transport solution that is beneficial to the environment. It
+                    eases the burden of too many vehicles on the road, reduce air and noise pollution. Helps reduce fuel
+                    expense due to the ideology of cost sharing between passengers.</p>
                 <div class="flex justify-center">
                     <a
                         href="/find"

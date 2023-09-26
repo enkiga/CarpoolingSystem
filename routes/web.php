@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SystemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/rides', function () {
     return view('rides');
@@ -61,10 +60,16 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+// Grouping routes with their respective controllers
+//Authenticating routes
+Route::get('/registration', [AuthController::class, 'registration'])->name('registration');
+Route::post('/registration', [AuthController::class, 'registrationPost'])->name('registration.post');
 
-Route::get('/registration', function () {
-    return view('registration');
-});
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+//System routes
+Route::get('/', [SystemController::class, 'index'])->name('welcome');
+

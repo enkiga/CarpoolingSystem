@@ -14,35 +14,42 @@
                        href="/">Home</a>
                 </li>
 
+                @auth
+                    <li>
+                        <a class="hover:text-secondary-500 {{ $activePage === 'my-ride' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
+                           href="/rides">Rides</a>
+                    </li>
 
-                <li>
-                    <a class="hover:text-secondary-500 {{ $activePage === 'my-ride' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
-                       href="/rides">Rides</a>
-                </li>
+                    <li>
+                        <a class="hover:text-secondary-500 {{ $activePage === 'car-details' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
+                           href="/car-details">Car
+                            Details</a>
+                    </li>
 
-                <li>
-                    <a class="hover:text-secondary-500 {{ $activePage === 'car-details' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
-                       href="/car-details">Car
-                        Details</a>
-                </li>
+                    <li>
+                        <a class="hover:text-secondary-500 {{ $activePage === 'find-car' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
+                           href="/find">Find A Car</a>
+                    </li>
 
-                <li>
-                    <a class="hover:text-secondary-500 {{ $activePage === 'find-car' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
-                       href="/find">Find A Car</a>
-                </li>
-
-                <li>
-                    <a class="hover:text-secondary-500 {{ $activePage === 'account' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
-                       href="/profile">Profile</a>
-                </li>
+                    <li>
+                        <a class="hover:text-secondary-500 {{ $activePage === 'account' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
+                           href="/profile">Profile</a>
+                    </li>
+                @endauth
 
             </ul>
         </div>
 
         <div class="flex items-center gap-6">
-            <a
-                href="/login"
-                class="bg-secondary-500 text-white px-5 py-2 rounded-full hover:bg-primary-300"> Sign In</a>
+            @auth
+                <a href="{{route('logout')}}"
+                   class="bg-secondary-500 text-white px-5 py-2 rounded-full hover:bg-primary-300"> Logout</a>
+            @else
+                <a
+                    href="/login"
+                    class="bg-secondary-500 text-white px-5 py-2 rounded-full hover:bg-primary-300"> Sign In</a>
+
+            @endauth
             <box-icon onclick="onToggleMenu(this)" name='menu-alt-right'
                       class="text-3xl cursor-pointer md:hidden"></box-icon>
         </div>
