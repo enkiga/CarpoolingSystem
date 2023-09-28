@@ -52,10 +52,6 @@ Route::get('/addRoute', function () {
     return view('addRoute');
 });
 
-Route::get('/car-details', function () {
-    return view('carDetails');
-});
-
 Route::get('/profile', function () {
     return view('profile');
 });
@@ -72,4 +68,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //System routes
 Route::get('/', [SystemController::class, 'index'])->name('welcome');
+Route::get('/car-details', [SystemController::class, 'carDetails'])->name('carDetails');
+Route::get('/add-vehicle', [SystemController::class, 'addVehicle'])->name('addVehicle');
+Route::post('/add-vehicle', [SystemController::class, 'addVehiclePost'])->name('addVehicle.post');
 

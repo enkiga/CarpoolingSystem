@@ -39,138 +39,58 @@
                                 </tr>
                                 </thead>
                                 <tbody class="text-gray-600 text-sm font-light">
-                                <tr class="border-b border-gray-200 hover:bg-primary-100">
+                                @if ($vehicles->isEmpty())
+                                    <tr>
+                                        <td colspan="5" class="py-3 px-6 text-center">
+                                            <span class="text-secondary-500">No vehicles found</span>
+                                        </td>
+                                    </tr>
+                                @else
+                                    @foreach($vehicles as $vehicle)
+                                        <tr class="border-b border-gray-200 hover:bg-primary-100">
 
-                                    <td class="py-3 px-6 text-left">
-                                        <div class="flex items-center">
+                                            <td class="py-3 px-6 text-left">
+                                                <div class="flex items-center">
 
-                                            <span>Nissan Sunny</span>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>KCA 123Z</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>4</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center text-sm text-gray-700">
-                                        <div class="relative inline-flex w-fit">
-                                            <div
-                                                class="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-primary-300 px-2.5 py-1 text-center align-baseline text-xs font-bold leading-none text-secondary-500">
-                                                <span>1</span>
-                                            </div>
-                                            <a
-                                                href="/bookingInfo"
-                                                class="inline-block rounded bg-secondary-500 px-6 py-2 text-sm font-medium leading-normal text-white hover:bg-secondary-400 ">
-                                                View
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-center">
-                                            <a href="/myCar">
-                                                <div class="w-6 mr-2 transform hover:scale-125">
-                                                    <i class='bx bxs-info-circle text-lg text-orange-500'></i>
+                                                    <span>{{$vehicle->vehicle_name}}</span>
                                                 </div>
-                                            </a>
-                                            <div class="w-6 mr-2 transform hover:scale-125">
-                                                <i class='bx bxs-edit-alt text-lg text-green-500'></i>
-                                            </div>
-
-                                            <div class="w-6 mr-2 transform hover:scale-125">
-                                                <i class='bx bxs-trash text-lg text-red-500'></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-primary-100">
-
-                                    <td class="py-3 px-6 text-left">
-                                        <div class="flex items-center">
-
-                                            <span>Nissan Sunny</span>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>KCA 123Z</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>4</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center text-sm text-gray-700">
-                                        <div class="relative inline-flex w-fit">
-                                            <div
-                                                class="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-primary-300 px-2.5 py-1 text-center align-baseline text-xs font-bold leading-none text-secondary-500">
-                                                <span>1</span>
-                                            </div>
-                                            <a
-                                                href="/bookingInfo"
-                                                class="inline-block rounded bg-secondary-500 px-6 py-2 text-sm font-medium leading-normal text-white hover:bg-secondary-400 ">
-                                                View
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-center">
-                                            <a href="/myCar">
-                                                <div class="w-6 mr-2 transform hover:scale-125">
-                                                    <i class='bx bxs-info-circle text-lg text-orange-500'></i>
+                                            </td>
+                                            <td class="py-3 px-6 text-center">
+                                                <span>{{$vehicle->vehiclePlate}}</span>
+                                            </td>
+                                            <td class="py-3 px-6 text-center">
+                                                <span>{{$vehicle->vehicle_capacity}}</span>
+                                            </td>
+                                            <td class="py-3 px-6 text-center text-sm text-gray-700">
+                                                <div class="relative inline-flex w-fit">
+                                                    <div
+                                                        class="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-primary-300 px-2.5 py-1 text-center align-baseline text-xs font-bold leading-none text-secondary-500">
+                                                        <span>1</span>
+                                                    </div>
+                                                    <a
+                                                        href="/bookingInfo"
+                                                        class="inline-block rounded bg-secondary-500 px-6 py-2 text-sm font-medium leading-normal text-white hover:bg-secondary-400 ">
+                                                        View
+                                                    </a>
                                                 </div>
-                                            </a>
-                                            <div class="w-6 mr-2 transform hover:scale-125">
-                                                <i class='bx bxs-edit-alt text-lg text-green-500'></i>
-                                            </div>
+                                            </td>
+                                            <td class="py-3 px-6 text-center">
+                                                <div class="flex item-center justify-center">
+                                                    <a href="/myCar">
+                                                        <div class="w-6 mr-2 transform hover:scale-125">
+                                                            <i class='bx bxs-info-circle text-lg text-orange-500'></i>
+                                                        </div>
+                                                    </a>
 
-                                            <div class="w-6 mr-2 transform hover:scale-125">
-                                                <i class='bx bxs-trash text-lg text-red-500'></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-primary-100">
-
-                                    <td class="py-3 px-6 text-left">
-                                        <div class="flex items-center">
-
-                                            <span>Nissan Sunny</span>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>KCA 123Z</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>4</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center text-sm text-gray-700">
-                                        <div class="relative inline-flex w-fit">
-                                            <div
-                                                class="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-primary-300 px-2.5 py-1 text-center align-baseline text-xs font-bold leading-none text-secondary-500">
-                                                <span>1</span>
-                                            </div>
-                                            <a
-                                                href="/bookingInfo"
-                                                class="inline-block rounded bg-secondary-500 px-6 py-2 text-sm font-medium leading-normal text-white hover:bg-secondary-400 ">
-                                                View
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-center">
-                                            <a href="/myCar">
-                                                <div class="w-6 mr-2 transform hover:scale-125">
-                                                    <i class='bx bxs-info-circle text-lg text-orange-500'></i>
+                                                    <div class="w-6 mr-2 transform hover:scale-125">
+                                                        <i class='bx bxs-trash text-lg text-red-500'></i>
+                                                    </div>
                                                 </div>
-                                            </a>
-                                            <div class="w-6 mr-2 transform hover:scale-125">
-                                                <i class='bx bxs-edit-alt text-lg text-green-500'></i>
-                                            </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
 
-                                            <div class="w-6 mr-2 transform hover:scale-125">
-                                                <i class='bx bxs-trash text-lg text-red-500'></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>

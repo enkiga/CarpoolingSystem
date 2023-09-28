@@ -13,15 +13,24 @@
 
                     <div class="text-center mt-12">
                         <h3 class="text-xl font-semibold leading-normal text-blueGray-700 mb-2">
-                            John Doe
+                            {{--Get current user name--}}
+                            @if (session('user'))
+                                {{session('user')->name}}
+                            @endif
                         </h3>
                         <div class="mb-2 text-blueGray-600 mt-10">
                             <i class="bx bxl-gmail mr-2 text-lg text-blueGray-400"></i>
-                            johndoe@gmail.com
+                            {{--Get current user email--}}
+                            @if (session('user'))
+                                {{session('user')->email}}
+                            @endif
                         </div>
                         <div class="mb-2 text-blueGray-600">
                             <i class="bx bxs-phone mr-2 text-lg text-blueGray-400"></i>
-                            (+254) 712 345 678
+                            {{--Get current user phone--}}
+                            @if (session('user'))
+                                {{session('user')->phone}}
+                            @endif
                         </div>
                     </div>
                     <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
