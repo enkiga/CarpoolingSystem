@@ -294,6 +294,9 @@ class SystemController extends Controller
             'request_date' => 'required',
         ]);
 
+        // get request date from request
+        $requestDate = $request->request_date;
+
         // get user from session
         $user = session()->get('user');
 
@@ -304,35 +307,34 @@ class SystemController extends Controller
             $existingRequest = Requests::where('requestID', $requestID)->first();
         } while ($existingRequest);
 
-        // Create new request
-        Requests::create([
-            'requestID' => $requestID,
-            'user_id' => $user->id,
-            'route_id' => $routeID,
-            'request_status' => 'pending',
-            'request_date' => $request->request_date,
-        ]);
-
-        // prevent double booking by checking if user has already booked this route on the same date
+        // prevent double booking date for same route
         $request = Requests::where('user_id', $user->id)
             ->where('route_id', $routeID)
-            ->where('request_date', $request->request_date)
+            ->where('request_date', $requestDate)
             ->first();
 
-
-        if ($request) {
-            return redirect()->route('viewRide', ['routeID' => $routeID])->with('error', 'You have already booked this ride on this date');
-
+        if (!$request) {
+            // Create new request
+            Requests::create([
+                'requestID' => $requestID,
+                'user_id' => $user->id,
+                'route_id' => $routeID,
+                'request_status' => 'pending',
+                'request_date' => $requestDate,
+            ]);
         } else {
-            // check if there was an error
-            $request = Routes::where('requestID', $requestID)->first();
-            if (!$request) {
-                return redirect()->route('viewRide', ['routeID' => $routeID])->with('error', 'Booking failed');
-            } else {
-                // go to view bookings
-                return redirect()->route('rides');
-            }
+            return redirect()->route('viewRide', ['routeID' => $routeID])->with('error', 'You have already booked this ride');
         }
+
+        // check if there was an error
+        $request = Requests::where('requestID', $requestID)->first();
+        if (!$request) {
+            return redirect()->route('viewRide', ['routeID' => $routeID])->with('error', 'Ride booking failed');
+        } else {
+            return redirect()->route('rides');
+        }
+
+
     }
 
     public function viewRides(): View
