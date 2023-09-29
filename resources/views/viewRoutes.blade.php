@@ -22,7 +22,7 @@
                                 </div>
                                 <div>
                                     <a class="bg-secondary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-500"
-                                       href="/addRoute">
+                                       href="{{route('addRoute', $vehicle->vehicleID)}}">
                                         <i class="bx bx-plus"></i>
                                         <span>Add Route</span>
                                     </a>
@@ -39,84 +39,42 @@
                                 </tr>
                                 </thead>
                                 <tbody class="text-gray-600 text-sm font-light">
-                                <tr class="border-b border-gray-200 hover:bg-primary-100">
+                                @if ($routes->isEmpty())
+                                    <tr>
+                                        <td colspan="5" class="py-3 px-6 text-center">
+                                            <span class="text-secondary-500">No routes found</span>
+                                        </td>
+                                    </tr>
+                                @else
+                                    @foreach($routes as $route)
+                                        <tr class="border-b border-gray-200 hover:bg-primary-100">
 
-                                    <td class="py-3 px-6 text-left">
-                                        <div class="flex items-center">
-                                            <span>Syokimau</span>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>Thika</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>08:00hrs</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>300</span>
-                                    </td>
+                                            <td class="py-3 px-6 text-left">
+                                                <div class="flex items-center">
+                                                    <span>{{$route->route_from}}</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-3 px-6 text-center">
+                                                <span>{{$route->route_to}}</span>
+                                            </td>
+                                            <td class="py-3 px-6 text-center">
+                                                <span>{{$route->route_time}}</span>
+                                            </td>
+                                            <td class="py-3 px-6 text-center">
+                                                <span>{{$route->route_price}}</span>
+                                            </td>
 
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-center">
+                                            <td class="py-3 px-6 text-center">
+                                                <div class="flex item-center justify-center">
 
-                                            <div class="w-6 mr-2 transform hover:scale-125">
-                                                <i class='bx bxs-trash text-lg text-red-500'></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-primary-100">
-
-                                    <td class="py-3 px-6 text-left">
-                                        <div class="flex items-center">
-                                            <span>Syokimau</span>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>Thika</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>08:00hrs</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>300</span>
-                                    </td>
-
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-center">
-
-                                            <div class="w-6 mr-2 transform hover:scale-125">
-                                                <i class='bx bxs-trash text-lg text-red-500'></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-primary-100">
-
-                                    <td class="py-3 px-6 text-left">
-                                        <div class="flex items-center">
-                                            <span>Syokimau</span>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>Thika</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>08:00hrs</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>300</span>
-                                    </td>
-
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-center">
-
-                                            <div class="w-6 mr-2 transform hover:scale-125">
-                                                <i class='bx bxs-trash text-lg text-red-500'></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                                    <div class="w-6 mr-2 transform hover:scale-125">
+                                                        <i class='bx bxs-trash text-lg text-red-500'></i>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>

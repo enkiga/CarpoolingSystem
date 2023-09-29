@@ -29,7 +29,7 @@
             @endif
         </div>
         <form class="container mx-auto px-5 py-3  bg-primary-50 rounded-2xl" action="{{route('addVehicle.post')}}"
-              method="POST" onsubmit="return addCarValidation()">
+              method="POST" onsubmit="return addCarValidation()" enctype="multipart/form-data">
             @csrf
             {{--heading--}}
             <div class="flex flex-col text-center w-full mb-20">
@@ -45,8 +45,7 @@
                                 or drag and drop</p>
                             <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                         </div>
-                        <input id="vehicle_image" type="file" class="hidden" alt="vehicle_image"
-                               name="vehicle_image"/>
+                        <input id="vehicle_image" type="file" name="vehicle_image" class="hidden" alt="vehicle_image"/>
 
                         <!-- Image Preview -->
                         <img id="imagePreview" src="#" alt="Image Preview" class="hidden h-40 w-80 object-fill mt-2 ">

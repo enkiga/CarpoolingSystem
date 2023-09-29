@@ -7,7 +7,7 @@
         </div>
 
         <div
-            class="nav-links md:static absolute bg-primary-50 md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
+                class="nav-links md:static absolute bg-primary-50 md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
             <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8 ">
                 <li>
                     <a class="hover:text-secondary-500 {{ $activePage === 'home' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
@@ -28,7 +28,7 @@
 
                     <li>
                         <a class="hover:text-secondary-500 {{ $activePage === 'find-car' ? 'font-bold text-secondary-500 border-b-2 border-secondary-500' : '' }}"
-                           href="/find">Find A Car</a>
+                           href="{{route('findRide')}}">Find A Car</a>
                     </li>
 
                     <li>

@@ -20,9 +20,6 @@ Route::get('/rides', function () {
     return view('rides');
 });
 
-Route::get('/find', function () {
-    return view('findCar');
-});
 
 Route::get('/addVehicle', function () {
     return view('addCar');
@@ -32,25 +29,10 @@ Route::get('/requestInfo', function () {
     return view('viewRequest');
 });
 
-Route::get('/rideInfo', function () {
-    return view('viewRide');
-});
-
 Route::get('/bookingInfo', function () {
     return view('viewBookings');
 });
 
-Route::get('/myCar', function () {
-    return view('myCarInfo');
-});
-
-Route::get('/routes', function () {
-    return view('viewRoutes');
-});
-
-Route::get('/addRoute', function () {
-    return view('addRoute');
-});
 
 Route::get('/profile', function () {
     return view('profile');
@@ -71,4 +53,13 @@ Route::get('/', [SystemController::class, 'index'])->name('welcome');
 Route::get('/car-details', [SystemController::class, 'carDetails'])->name('carDetails');
 Route::get('/add-vehicle', [SystemController::class, 'addVehicle'])->name('addVehicle');
 Route::post('/add-vehicle', [SystemController::class, 'addVehiclePost'])->name('addVehicle.post');
+
+Route::get('/myCar/{vehicleID}', [SystemController::class, 'viewCarDetails'])->name('myCarInfo');
+Route::get('/deleteCar/{vehicleID}', [SystemController::class, 'deleteCarDetails'])->name('deleteCar');
+Route::get('/viewRoutes/{vehicleID}', [SystemController::class, 'viewRoutes'])->name('viewRoutes');
+Route::get('/addRoute/{vehicleID}', [SystemController::class, 'addRoute'])->name('addRoute');
+Route::post('/addRoute/{vehicleID}', [SystemController::class, 'addRoutePost'])->name('addRoute.post');
+Route::get('/findRide', [SystemController::class, 'findRide'])->name('findRide');
+Route::get('/findRideSearch', [SystemController::class, 'findRideSearch'])->name('findRideSearch');
+Route::get('/viewRide/{routeID}', [SystemController::class, 'viewRideResult'])->name('viewRide');
 
