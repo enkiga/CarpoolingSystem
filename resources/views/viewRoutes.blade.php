@@ -8,6 +8,27 @@
     @include('components.navigationBar')
 
     <section class="text-gray-600 body-font">
+        <div class="error">
+            @if($errors->any())
+                <script>
+                    let errorMessage = ''
+
+                    @foreach($errors->all() as $error)
+                        errorMessage += '{{$error}}\n';
+                    @endforeach
+
+                    if (errorMessage !== '') {
+                        alert(errorMessage);
+                    }
+                </script>
+            @endif
+
+            @if(session()->has('error'))
+                <script>
+                    alert('{{session('error')}}');
+                </script>
+            @endif
+        </div>
         <!-- component -->
         <div class="container mx-auto flex px-5 py-12 flex-col items-center">
             <div class="overflow-x-auto w-full">
@@ -67,9 +88,10 @@
                                             <td class="py-3 px-6 text-center">
                                                 <div class="flex item-center justify-center">
 
-                                                    <div class="w-6 mr-2 transform hover:scale-125">
+                                                    <a href="{{route('deleteRoute', $route->routeID)}}"
+                                                       class="w-6 mr-2 transform hover:scale-125">
                                                         <i class='bx bxs-trash text-lg text-red-500'></i>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>

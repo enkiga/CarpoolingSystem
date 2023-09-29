@@ -43,7 +43,7 @@
                                 </div>
                                 <div>
                                     <a class="bg-secondary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-500"
-                                       href="/addVehicle">
+                                       href="{{route("addVehicle")}}">
                                         <i class="bx bx-plus"></i>
                                         <span>Add Vehicle</span>
                                     </a>
@@ -86,10 +86,10 @@
                                                 <div class="relative inline-flex w-fit">
                                                     <div
                                                         class="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full bg-primary-300 px-2.5 py-1 text-center align-baseline text-xs font-bold leading-none text-secondary-500">
-                                                        <span>1</span>
+                                                        <span>{{$vehicle->requestCount}}</span>
                                                     </div>
                                                     <a
-                                                        href="/bookingInfo"
+                                                        href="{{route('bookingInfo', $vehicle->vehicleID)}}    "
                                                         class="inline-block rounded bg-secondary-500 px-6 py-2 text-sm font-medium leading-normal text-white hover:bg-secondary-400 ">
                                                         View
                                                     </a>

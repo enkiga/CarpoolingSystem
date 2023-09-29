@@ -27,111 +27,57 @@
                                 </tr>
                                 </thead>
                                 <tbody class="text-gray-600 text-sm font-light">
-                                <tr class="border-b border-gray-200 hover:bg-primary-100">
+                                @foreach($requests as $request)
+                                    <tr class="border-b border-gray-200 hover:bg-primary-100">
 
-                                    <td class="py-3 px-6 text-left">
-                                        <div class="flex items-center">
+                                        <td class="py-3 px-6 text-left">
+                                            <div class="flex items-center">
 
-                                            <span>Jane Doe</span>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>(+254) 12 345 678</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>Thika - Syokimau</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>12/12/24</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>08:00hrs</span>
-                                    </td>
-
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-center">
-                                            <div
-                                                class="w-4 mr-5 transform text-green-500 hover:text-purple-500 hover:scale-110">
-                                                <i class='bx bx-check text-2xl'></i>
+                                                <span>{{$request->client->name}}</span>
                                             </div>
+                                        </td>
+                                        <td class="py-3 px-6 text-center">
+                                            <span>{{$request->client->phone}}</span>
+                                        </td>
+                                        <td class="py-3 px-6 text-center">
+                                            <span>{{$request->route->route_destination}}</span>
+                                        </td>
+                                        <td class="py-3 px-6 text-center">
+                                            <span>{{$request->request_date}}</span>
+                                        </td>
+                                        <td class="py-3 px-6 text-center">
+                                            <span>{{$request->route->route_time}}</span>
+                                        </td>
 
-                                            <div
-                                                class="w-4 mr-2 transform text-red-500 hover:text-purple-500 hover:scale-110">
-                                                <i class='bx bx-x text-2xl'></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-primary-100">
+                                        @if($request->request_status == 'pending')
+                                            <td class="py-3 px-6 text-center">
+                                                <div class="flex item-center justify-center">
+                                                    <a
+                                                        href="{{route('acceptBooking',$request->requestID )}}"
+                                                        class="w-4 mr-5 transform text-green-500 hover:text-purple-500 hover:scale-110">
+                                                        <i class='bx bx-check text-2xl'></i>
+                                                    </a>
 
-                                    <td class="py-3 px-6 text-left">
-                                        <div class="flex items-center">
+                                                    <a
+                                                        href="{{route('declineBooking', $request->requestID)}}"
+                                                        class="w-4 mr-2 transform text-red-500 hover:text-purple-500 hover:scale-110">
+                                                        <i class='bx bx-x text-2xl'></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        @elseif($request->request_status == 'accepted')
+                                            <td class="py-3 px-6 text-center">
+                                                <span
+                                                    class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Accepted</span>
+                                            </td>
+                                        @else
+                                            <td class="py-3 px-6 text-center">
+                                                <span class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Declined</span>
+                                            </td>
+                                        @endif
+                                    </tr>
+                                @endforeach
 
-                                            <span>Jane Doe</span>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>(+254) 12 345 678</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>Thika - Syokimau</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>12/12/24</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>08:00hrs</span>
-                                    </td>
-
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-center">
-                                            <div
-                                                class="w-4 mr-5 transform text-green-500 hover:text-purple-500 hover:scale-110">
-                                                <i class='bx bx-check text-2xl'></i>
-                                            </div>
-
-                                            <div
-                                                class="w-4 mr-2 transform text-red-500 hover:text-purple-500 hover:scale-110">
-                                                <i class='bx bx-x text-2xl'></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-primary-100">
-
-                                    <td class="py-3 px-6 text-left">
-                                        <div class="flex items-center">
-
-                                            <span>Jane Doe</span>
-                                        </div>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>(+254) 12 345 678</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>Thika - Syokimau</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>12/12/24</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <span>08:00hrs</span>
-                                    </td>
-
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-center">
-                                            <div
-                                                class="w-4 mr-5 transform text-green-500 hover:text-purple-500 hover:scale-110">
-                                                <i class='bx bx-check text-2xl'></i>
-                                            </div>
-
-                                            <div
-                                                class="w-4 mr-2 transform text-red-500 hover:text-purple-500 hover:scale-110">
-                                                <i class='bx bx-x text-2xl'></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>

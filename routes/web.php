@@ -16,28 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/rides', function () {
-    return view('rides');
-});
-
-
-Route::get('/addVehicle', function () {
-    return view('addCar');
-});
-
-Route::get('/requestInfo', function () {
-    return view('viewRequest');
-});
-
-Route::get('/bookingInfo', function () {
-    return view('viewBookings');
-});
-
-
-Route::get('/profile', function () {
-    return view('profile');
-});
-
 // Grouping routes with their respective controllers
 //Authenticating routes
 Route::get('/registration', [AuthController::class, 'registration'])->name('registration');
@@ -57,9 +35,18 @@ Route::post('/add-vehicle', [SystemController::class, 'addVehiclePost'])->name('
 Route::get('/myCar/{vehicleID}', [SystemController::class, 'viewCarDetails'])->name('myCarInfo');
 Route::get('/deleteCar/{vehicleID}', [SystemController::class, 'deleteCarDetails'])->name('deleteCar');
 Route::get('/viewRoutes/{vehicleID}', [SystemController::class, 'viewRoutes'])->name('viewRoutes');
+Route::get('/deleteRoute/{routeID}', [SystemController::class, 'deleteRoute'])->name('deleteRoute');
 Route::get('/addRoute/{vehicleID}', [SystemController::class, 'addRoute'])->name('addRoute');
 Route::post('/addRoute/{vehicleID}', [SystemController::class, 'addRoutePost'])->name('addRoute.post');
 Route::get('/findRide', [SystemController::class, 'findRide'])->name('findRide');
 Route::get('/findRideSearch', [SystemController::class, 'findRideSearch'])->name('findRideSearch');
 Route::get('/viewRide/{routeID}', [SystemController::class, 'viewRideResult'])->name('viewRide');
+Route::post('/viewRide/{routeID}', [SystemController::class, 'bookRide'])->name('bookRide');
+Route::get('/rides', [SystemController::class, 'viewRides'])->name('rides');
+Route::get('/viewRequest/{requestID}', [SystemController::class, 'requestInfo'])->name('viewRequest');
+Route::get('/deleteRequest/{requestID}', [SystemController::class, 'deleteRequest'])->name('deleteRequest');
+Route::get('/bookingInfo/{vehicleID}', [SystemController::class, 'bookingInfo'])->name('bookingInfo');
+Route::get('/acceptBooking/{requestID}', [SystemController::class, 'acceptBooking'])->name('acceptBooking');
+Route::get('/declineBooking/{requestID}', [SystemController::class, 'declineBooking'])->name('declineBooking');
+Route::get('/profile', [SystemController::class, 'viewProfile'])->name('profile');
 

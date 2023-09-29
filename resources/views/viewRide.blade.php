@@ -50,13 +50,37 @@
                     {{--compare current user id to owner id. if they are the same hide link Book--}}
                     @if($user->id !== $owner->id)
                         <div class="bg-primary-50 mt-2 py-2 rounded pe-2">
-                            <form class="flex flex-col md:flex-row justify-between items-center">
+                            <div class="error">
+                                @if($errors->any())
+                                    <script>
+                                        let errorMessage = ''
+
+                                        @foreach($errors->all() as $error)
+                                            errorMessage += '{{$error}}\n';
+                                        @endforeach
+
+                                        if (errorMessage !== '') {
+                                            alert(errorMessage);
+                                        }
+                                    </script>
+                                @endif
+
+                                @if(session()->has('error'))
+                                    <script>
+                                        alert('{{session('error')}}');
+                                    </script>
+                                @endif
+                            </div>
+                            <form class="flex flex-col md:flex-row justify-between items-center"
+                                  method="POST" action="{{route("bookRide", $route->routeID)}}"
+                                  onsubmit="return bookingValidator()">
+                                @csrf
                                 <div class="w-full md:flex md:flex-row px-4">
                                     <label
                                         class="text-center py-2 font-semibold text-base text-gray-500 w-full md:w-1/3"
-                                        for="booking_date">Book Date:</label>
+                                        for="request_date">Book Date:</label>
                                     <input class="py-2 px-2 block rounded-md w-full md:w-2/3" type="date"
-                                           name="booking_date" id="booking_date"/>
+                                           name="request_date" id="request_date"/>
                                 </div>
                                 <div class="mt-2 md:mt-0 text-center">
                                     <button
@@ -79,6 +103,27 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function bookingValidator() {
+            let bookingDate = document.getElementById('request_date').value;
+
+            if (bookingDate === '') {
+                alert('Please select a booking date');
+                return false;
+            }
+
+            // ensure booking date is not in the past
+            let today = new Date();
+            let bookingDateObj = new Date(bookingDate);
+            if (bookingDateObj < today) {
+                alert('Booking date cannot be in the past');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 
     @include('components.footer')
 
