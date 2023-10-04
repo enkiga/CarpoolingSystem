@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministrationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SystemController;
 use Illuminate\Support\Facades\Route;
@@ -51,5 +52,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/declineBooking/{requestID}', [SystemController::class, 'declineBooking'])->name('declineBooking');
     Route::get('/profile', [SystemController::class, 'viewProfile'])->name('profile');
 });
+
+//Admin routes
+Route::get('/dashboard', [AdministrationController::class, 'dashboard'])->name('dashboard');
+Route::get('/users', [AdministrationController::class, 'users'])->name('users');
+Route::get('/vehicles', [AdministrationController::class, 'vehicles'])->name('vehicles');
+Route::get('/routes', [AdministrationController::class, 'routes'])->name('routes');
+Route::get('/requests', [AdministrationController::class, 'requests'])->name('requests');
 
 

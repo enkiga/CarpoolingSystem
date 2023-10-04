@@ -67,7 +67,14 @@ class AuthController extends Controller
 
             Session::put('user', $user);
 
-            return redirect()->intended(route('welcome'));
+            //get user info from user table
+            $user = User::where('email', $request->email)->first();
+
+            // check user role then redirect to respective pages
+            if ($user->role == 'admin') {
+                return redirect()->intended(route('dashboard'));
+            } else
+                return redirect()->intended(route('welcome'));
         }
 
         return redirect(route('login'))->with('error', 'Invalid credentials');
