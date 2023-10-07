@@ -39,8 +39,8 @@ class AdministrationController extends Controller
 
     public function users(): View
     {
-        // get all users and paginate them into 10 users per page
-        $users = User::paginate(10);
+        // paginate all users with the role of user
+        $users = User::where('role', 'user')->paginate(10);
 
         // from users full name get the last name and save it as surname
         foreach ($users as $user) {
@@ -76,7 +76,48 @@ class AdministrationController extends Controller
 
     public function routes(): View
     {
-        return view('AdminPages.adminRoutes');
+        // get all routes paginate them
+        $routes = Routes::paginate(10);
+
+        // change route time format to hh:mm AM/PM
+        foreach ($routes as $route) {
+            $route->route_time = date('h:i A', strtotime($route->route_time));
+        }
+
+        // from vehicle id in routes
+        // get the vehicle name and save it as vehicleName
+        foreach ($routes as $route) {
+            $vehicle = Vehicle::where('vehicleID', $route->vehicle_id)->first();
+            $route->vehicleName = $vehicle->vehicle_name;
+        }
+        // from vehicle id in routes get user id and save it as userID
+        foreach ($routes as $route) {
+            $vehicle = Vehicle::where('vehicleID', $route->vehicle_id)->first();
+            $route->userID = $vehicle->user_id;
+        }
+
+        //from userID get the user name from table users and save it as userName
+        foreach ($routes as $route) {
+            $user = User::where('id', $route->userID)->first();
+            $route->userName = $user->name;
+        }
+
+
+        return view('AdminPages.adminRoutes', [
+            'routes' => $routes,
+        ]);
+    }
+
+    public function deleteRoute($routeID)
+    {
+        // delete route with the given route id
+        Routes::where('routeID', $routeID)->delete();
+
+        //also delete the requests associated with the route
+        Requests::where('route_id', $routeID)->delete();
+
+
+        return redirect()->route('routes');
     }
 
     public function requests(): View

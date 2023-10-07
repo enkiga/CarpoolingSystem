@@ -58,6 +58,7 @@ Route::get('/dashboard', [AdministrationController::class, 'dashboard'])->name('
 Route::get('/users', [AdministrationController::class, 'users'])->name('users');
 Route::get('/vehicles', [AdministrationController::class, 'vehicles'])->name('vehicles');
 Route::get('/routes', [AdministrationController::class, 'routes'])->name('routes');
+Route::get('/routes/{RouteID}', [AdministrationController::class, 'deleteRoute'])->name('deleteRouteAdmin');
 Route::get('/requests', [AdministrationController::class, 'requests'])->name('requests');
 
 
