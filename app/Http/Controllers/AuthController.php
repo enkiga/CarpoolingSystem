@@ -53,11 +53,12 @@ class AuthController extends Controller
         return view('login');
     }
 
+
     public function loginPost(Request $request): RedirectResponse
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         $credentials = $request->only('email', 'password');
@@ -65,20 +66,20 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            Session::put('user', $user);
+            if ($user instanceof User) { // Check if $user is an instance of the User model
+                Session::put('user', $user);
 
-            //get user info from user table
-            $user = User::where('email', $request->email)->first();
-
-            // check user role then redirect to respective pages
-            if ($user->role == 'admin') {
-                return redirect()->intended(route('dashboard'));
-            } else
-                return redirect()->intended(route('welcome'));
+                if ($user->isAdmin()) {
+                    return redirect()->intended(route('dashboard')); // Admin dashboard route
+                } else {
+                    return redirect()->intended(route('welcome')); // Regular user route
+                }
+            }
         }
 
         return redirect(route('login'))->with('error', 'Invalid credentials');
     }
+
 
     public function logout(): RedirectResponse
     {

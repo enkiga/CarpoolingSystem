@@ -54,12 +54,16 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 //Admin routes
-Route::get('/dashboard', [AdministrationController::class, 'dashboard'])->name('dashboard');
-Route::get('/users', [AdministrationController::class, 'users'])->name('users');
-Route::get('/vehicles', [AdministrationController::class, 'vehicles'])->name('vehicles');
-Route::get('/vehicles/{VehicleID}', [AdministrationController::class, 'deleteVehicle'])->name('deleteVehicleAdmin');
-Route::get('/routes', [AdministrationController::class, 'routes'])->name('routes');
-Route::get('/routes/{RouteID}', [AdministrationController::class, 'deleteRoute'])->name('deleteRouteAdmin');
-Route::get('/requests', [AdministrationController::class, 'requests'])->name('requests');
+// Ensure that the user is an admin before accessing the routes
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/dashboard', [AdministrationController::class, 'dashboard'])->name('dashboard');
+    Route::get('/users', [AdministrationController::class, 'users'])->name('users');
+    Route::get('/vehicles', [AdministrationController::class, 'vehicles'])->name('vehicles');
+    Route::get('/vehicles/{VehicleID}', [AdministrationController::class, 'deleteVehicle'])->name('deleteVehicleAdmin');
+    Route::get('/routes', [AdministrationController::class, 'routes'])->name('routes');
+    Route::get('/routes/{RouteID}', [AdministrationController::class, 'deleteRoute'])->name('deleteRouteAdmin');
+    Route::get('/requests', [AdministrationController::class, 'requests'])->name('requests');
+});
+
 
 
