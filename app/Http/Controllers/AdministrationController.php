@@ -6,6 +6,7 @@ use App\Models\Requests;
 use App\Models\Routes;
 use App\Models\User;
 use App\Models\Vehicle;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class AdministrationController extends Controller
@@ -71,7 +72,49 @@ class AdministrationController extends Controller
 
     public function vehicles(): View
     {
-        return view('AdminPages.adminVehicles');
+        // get all vehicles paginate them
+        $vehicles = Vehicle::paginate(5);
+
+        // from user_id in vehicle get user name from Users and save it as userName
+        foreach ($vehicles as $vehicle) {
+            $user = User::where('id', $vehicle->user_id)->first();
+            $vehicle->userName = $user->name;
+        }
+
+        return view('AdminPages.adminVehicles', [
+            'vehicles' => $vehicles,
+        ]);
+    }
+
+    public function deleteVehicle($vehicleID): RedirectResponse
+    {
+        // check if vehicle has accepted requests if so you can't delete it
+        //from request table get route id
+        //from route table get vehicle id
+        //from vehicle table get vehicle id
+        //if vehicle id in vehicle table is equal to vehicle id in route table
+        //and vehicle id in route table is equal to vehicle id in request table
+        //and request status is accepted
+        //then you can't delete the vehicle
+        $requests = Requests::where('request_status', 'accepted')
+            ->join('routes', 'request.route_id', '=', 'routes.routeID')
+            ->join('vehicles', 'routes.vehicle_id', '=', 'vehicles.vehicleID')
+            ->where('vehicles.vehicleID', $vehicleID)
+            ->get();
+
+        if ($requests->count() > 0) {
+            // if vehicle has accepted requests redirect back with error message
+            return redirect(route('vehicles'))->with('error', 'Vehicle has accepted requests, you cannot delete it');
+        } else {
+            // if vehicle has no accepted requests delete it
+            Vehicle::where('vehicleID', $vehicleID)->delete();
+
+            // delete all routes that belong to the vehicle
+            Routes::where('vehicle_id', $vehicleID)->delete();
+
+            return redirect()->route('vehicles');
+
+        }
     }
 
     public function routes(): View
@@ -108,20 +151,62 @@ class AdministrationController extends Controller
         ]);
     }
 
-    public function deleteRoute($routeID)
+    public function deleteRoute($routeID): RedirectResponse
     {
-        // delete route with the given route id
-        Routes::where('routeID', $routeID)->delete();
+        // check if route has accepted requests if so you can't delete it
+        $requests = Requests::where('route_id', $routeID)->where('request_status', 'accepted')->get();
 
-        //also delete the requests associated with the route
-        Requests::where('route_id', $routeID)->delete();
-
-
-        return redirect()->route('routes');
+        if ($requests->count() > 0) {
+            // if route has accepted requests redirect back with error message
+            return redirect(route('routes'))->with('error', 'Route has accepted requests, you can\'t delete it');
+        } else {
+            // if route has no accepted requests delete it
+            Routes::where('routeID', $routeID)->delete();
+            return redirect()->route('routes');
+        }
     }
 
     public function requests(): View
     {
-        return view('AdminPages.adminRequests');
+        // get all requests paginate them
+        $requests = Requests::paginate(10);
+
+        // from route id in requests get route time and save it as routeTime
+        foreach ($requests as $request) {
+            $route = Routes::where('routeID', $request->route_id)->first();
+            $request->routeTime = $route->route_time;
+        }
+
+        // change route time format to hh:mm AM/PM
+        foreach ($requests as $request) {
+            $request->routeTime = date('h:i A', strtotime($request->routeTime));
+        }
+
+        // from route get route from and route to and save it as destination
+        foreach ($requests as $request) {
+            $route = Routes::where('routeID', $request->route_id)->first();
+            $request->destination = $route->route_from . ' - ' . $route->route_to;
+        }
+
+        // from route get vehicle id and save it as vehicleID
+        foreach ($requests as $request) {
+            $route = Routes::where('routeID', $request->route_id)->first();
+            $request->vehicleID = $route->vehicle_id;
+        }
+
+        // from user id get username and save it as customerName
+        foreach ($requests as $request) {
+            $user = User::where('id', $request->user_id)->first();
+            $request->customerName = $user->name;
+        }
+
+        // change date format to dd/mm/yyyy
+        foreach ($requests as $request) {
+            $request->request_date = date('d/m/Y', strtotime($request->request_date));
+        }
+        // return view with requests
+        return view('AdminPages.adminRequests', [
+            'requests' => $requests,
+        ]);
     }
 }
