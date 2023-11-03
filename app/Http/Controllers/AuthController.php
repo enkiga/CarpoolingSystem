@@ -33,8 +33,10 @@ class AuthController extends Controller
         // get query builder instance
         $query = User::query();
 
-        // check if user with email  and phone exists
-        if ($query->where('email', $data['email'])->orWhere('phone', $data['phone'])->exists()) {
+        // Check if user with email or phone exists
+        $existingUser = User::where('email', $data['email'])->orWhere('phone', $data['phone'])->first();
+
+        if ($existingUser) {
             return redirect(route('registration'))->with('error', 'User already exists');
         }
 
