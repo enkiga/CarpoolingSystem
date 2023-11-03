@@ -1,7 +1,9 @@
 ## Green Energy Carpooling System
 
 <div align="center">
-  <img src="public/images/logo.png" alt="LocalImage">
+  <img 
+    src="public/images/logo.png" 
+    alt="LocalImage">
 </div>
 
 ### Project Description
