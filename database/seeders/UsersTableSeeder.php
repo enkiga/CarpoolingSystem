@@ -19,18 +19,18 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Admin',
                 'email' => 'admin@greencarpool.com',
-                'phone' => '+254741358859',
+                'phone' => '+254711111111',
                 'role' => 'admin',
                 'password' => Hash::make('admin123'),
                 'created_at' => now(),
 
             ],
             [
-                'name' => 'Baruch Tony',
-                'email' => 'tonybaruch@gmail.com',
-                'phone' => '+254717005220',
+                'name' => 'John Doe',
+                'email' => 'johndoe@gmail.com',
+                'phone' => '+254700000000',
                 'role' => 'user',
-                'password' => Hash::make('baruchtony@123'),
+                'password' => Hash::make('JohnDoe@123'),
                 'created_at' => now(),
 
             ]
