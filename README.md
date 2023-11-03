@@ -130,3 +130,26 @@ path: database/seeds/UserTableSeeder.php
 
 ### Project Screenshots
 
+![Login](public/images/Screenshot_7.png)
+
+![Registration](public/images/Screenshot_8.png)
+
+![Home Page Before Authentication](public/images/Screenshot_1.png)
+
+![Home Page After Authentication](public/images/Screenshot_5.png)
+
+![Add Vehicle](public/images/Screenshot_2.png)
+
+![Add Route](public/images/Screenshot_4.png)
+
+![Find Route](public/images/Screenshot_3.png)
+
+![Booking](public/images/Screenshot_10.png)
+
+![Profile](public/images/Screenshot_11.png)
+
+![Admin Dashboard](public/images/Screenshot_6.png)
+
+
+
+
